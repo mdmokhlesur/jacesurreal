@@ -1,0 +1,62 @@
+"use client";
+
+interface Props {
+    totalPlays: string;
+    totalLikes: string;
+}
+
+export default function DJSection({ totalPlays, totalLikes }: Props) {
+    const tiltCard = (e: React.MouseEvent<HTMLDivElement>) => {
+        const card = e.currentTarget;
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        const rotateX = (y - centerY) / 20;
+        const rotateY = (centerX - x) / 20;
+        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
+    };
+
+    const resetTilt = (e: React.MouseEvent<HTMLDivElement>) => {
+        const card = e.currentTarget;
+        card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale(1)';
+    };
+
+    return (
+        <div className="dj-section">
+            <div 
+                className="dj-photo-container" 
+                id="djPhoto" 
+                onMouseMove={tiltCard} 
+                onMouseLeave={resetTilt}
+            >
+                <div className="dj-photo-inner">
+                    <img 
+                        src="/dj.jpg" 
+                        alt="DJ Surreal" 
+                        className="dj-photo-img"
+                    />
+                </div>
+                <div className="dj-info">
+                    <h1 className="dj-name">DJ SURREAL</h1>
+                    <p className="dj-tagline">Electronic • House • Future Bass</p>
+                    <div className="dj-stats">
+                        <div className="stat-badge plays">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <polygon points="5 3 19 12 5 21 5 3" />
+                            </svg>
+                            <span id="totalPlays">{totalPlays}</span> plays
+                        </div>
+                        <div className="stat-badge likes">
+                            <svg viewBox="0 0 24 24" stroke="currentColor" fill="none">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+                            </svg>
+                            <span id="totalLikes">{totalLikes}</span> likes
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+}
