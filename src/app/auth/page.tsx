@@ -8,56 +8,56 @@ export default function AuthPage() {
   const [mode, setMode] = useState<"login" | "register">("login");
 
   return (
-    <div className="auth-container">
-      <div className="auth-card">
-        <div className="auth-header">
-          <Link href="/" className="auth-logo">
+    <div className="auth-container min-h-screen flex items-center justify-center px-6 py-10 relative z-10">
+      <div className="auth-card w-full max-w-[480px]">
+        <div className="auth-header text-center mb-10">
+          <Link href="/" className="auth-logo inline-block font-bebas text-2xl tracking-[4px] bg-primary-gradient bg-clip-text text-transparent no-underline mb-6 hover:scale-105 transition-transform">
             DJ SURREAL
           </Link>
-          <h1>{mode === "login" ? "Welcome Back" : "Create Account"}</h1>
-          <p>
+          <h1 className="text-3xl font-bold mb-3 text-white">{mode === "login" ? "Welcome Back" : "Create Account"}</h1>
+          <p className="text-white/50 text-[0.95rem] leading-relaxed">
             {mode === "login"
               ? "Enter your credentials to access your studio"
               : "Join the Surreal community today"}
           </p>
         </div>
 
-        <form className="auth-form" onSubmit={(e) => e.preventDefault()}>
+        <form className="auth-form flex flex-col gap-6" onSubmit={(e) => e.preventDefault()}>
           {mode === "register" && (
-            <div className="input-group">
-              <label>
+            <div className="input-group flex flex-col gap-2.5">
+              <label className="flex items-center gap-2 text-[0.85rem] text-white/50 font-medium">
                 <User size={16} /> Full Name
               </label>
-              <input type="text" placeholder="Jace Surreal" />
+              <input type="text" placeholder="Jace Surreal" className="bg-white/5 border border-white/10 rounded-xl px-4 py-3.5 text-white text-[0.95rem] transition-all focus:outline-none focus:bg-white/10 focus:border-primary" />
             </div>
           )}
 
-          <div className="input-group">
-            <label>
+          <div className="input-group flex flex-col gap-2.5">
+            <label className="flex items-center gap-2 text-[0.85rem] text-white/50 font-medium">
               <Mail size={16} /> Email Address
             </label>
-            <input type="email" placeholder="hello@jacesurreal.com" />
+            <input type="email" placeholder="hello@jacesurreal.com" className="bg-white/5 border border-white/10 rounded-xl px-4 py-3.5 text-white text-[0.95rem] transition-all focus:outline-none focus:bg-white/10 focus:border-primary" />
           </div>
 
-          <div className="input-group">
-            <label>
+          <div className="input-group flex flex-col gap-2.5">
+            <label className="flex items-center gap-2 text-[0.85rem] text-white/50 font-medium">
               <Lock size={16} /> Password
             </label>
-            <input type="password" placeholder="••••••••" />
+            <input type="password" placeholder="••••••••" className="bg-white/5 border border-white/10 rounded-xl px-4 py-3.5 text-white text-[0.95rem] transition-all focus:outline-none focus:bg-white/10 focus:border-primary" />
           </div>
 
-          <button className="submit-btn">
+          <button className="submit-btn mt-3 bg-primary-gradient text-white border-none rounded-xl p-4 text-base font-semibold cursor-pointer flex items-center justify-center gap-2.5 transition-all shadow-[0_10px_30px_rgba(255,45,85,0.3)] hover:translate-y-[-2px]">
             {mode === "login" ? "Sign In" : "Register"}
             <ArrowRight size={18} />
           </button>
         </form>
 
-        <div className="auth-divider">
-          <span>Or continue with</span>
+        <div className="auth-divider my-8 relative text-center flex items-center justify-center">
+          <span className="relative bg-[#0d0d12] px-4 text-white/50 text-[0.8rem] uppercase tracking-wider z-10">Or continue with</span>
         </div>
         
-        <div className="social-auth-single">
-          <button className="social-btn google-btn">
+        <div className="social-auth-single flex justify-center mt-2">
+          <button className="social-btn google-btn w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3.5 text-white text-[0.95rem] font-medium flex items-center justify-center gap-3 transition-all hover:bg-white/10">
             <svg viewBox="0 0 24 24" width="20" height="20">
               <path
                 fill="currentColor"
@@ -80,16 +80,16 @@ export default function AuthPage() {
           </button>
         </div>
 
-        <div className="auth-footer">
+        <div className="auth-footer mt-8 text-center">
           {mode === "login" ? (
-            <p>
+            <p className="text-white/50 text-[0.9rem]">
               Don&apos;t have an account?{" "}
-              <button onClick={() => setMode("register")}>Register</button>
+              <button className="bg-none border-none text-primary font-semibold cursor-pointer ml-1 hover:underline" onClick={() => setMode("register")}>Register</button>
             </p>
           ) : (
-            <p>
+            <p className="text-white/50 text-[0.9rem]">
               Already have an account?{" "}
-              <button onClick={() => setMode("login")}>Sign In</button>
+              <button className="bg-none border-none text-primary font-semibold cursor-pointer ml-1 hover:underline" onClick={() => setMode("login")}>Sign In</button>
             </p>
           )}
         </div>

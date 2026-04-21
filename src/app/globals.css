@@ -1,3 +1,20 @@
+@import "tailwindcss";
+
+/* ----- TAILWIND 4 DESIGN SYSTEM ----- */
+@theme {
+  --color-primary: #ff2d55;
+  --color-primary-light: #ff6b8a;
+  --color-secondary: #00d4ff;
+  --color-accent: #f9d423;
+  --color-dark: #06060a;
+  --color-darker: #030305;
+  --color-surface: rgba(255, 255, 255, 0.04);
+  --color-surface-hover: rgba(255, 255, 255, 0.08);
+  --color-border-subtle: rgba(255, 255, 255, 0.1);
+  --background-image-primary-gradient: linear-gradient(135deg, #ff2d55 0%, #ff6b35 50%, #f9d423 100%);
+  --background-image-blue-gradient: linear-gradient(135deg, #00d4ff 0%, #7b2dff 100%);
+}
+
 /* ----- PROPER RESET & VARIABLES ----- */
 * {
     margin: 0;
