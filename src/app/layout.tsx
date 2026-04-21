@@ -16,6 +16,7 @@ const bebasNeue = Bebas_Neue({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("http://localhost:3000"),
   title: "DJ SURREAL · official",
   description:
     "Official website of DJ SURREAL. Electronic, House, and Future Bass tracks and sets.",

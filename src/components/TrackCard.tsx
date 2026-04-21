@@ -11,6 +11,7 @@ interface Track {
   liked: boolean;
   disliked: boolean;
   bpm: number;
+  thumbnail: string;
   waveform: number[];
 }
 
