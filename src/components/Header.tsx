@@ -3,16 +3,17 @@
 import { Sun, Moon, Search } from "lucide-react";
 import { useState, useEffect } from "react";
 import { useDebounce } from "@/lib/useDebounce";
+import Link from "next/link";
 
 interface HeaderProps {
-    onSearch: (query: string) => void;
+  onSearch: (query: string) => void;
 }
 
 export default function Header({ onSearch }: HeaderProps) {
   const [theme, setTheme] = useState<"dark" | "light">("dark");
   const [isAnimating, setIsAnimating] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
-  
+
   const debouncedSearch = useDebounce(searchQuery, 300);
 
   useEffect(() => {
@@ -24,7 +25,7 @@ export default function Header({ onSearch }: HeaderProps) {
   }, [debouncedSearch, onSearch]);
 
   const toggleTheme = () => {
-    setTheme(prev => prev === "dark" ? "light" : "dark");
+    setTheme((prev) => (prev === "dark" ? "light" : "dark"));
   };
 
   const animateLogo = () => {
@@ -34,33 +35,67 @@ export default function Header({ onSearch }: HeaderProps) {
 
   return (
     <header className="header-modern">
-      <div 
-        className="logo" 
+      <div
+        className="logo"
         onClick={animateLogo}
-        style={isAnimating ? { animation: 'pulse 0.5s ease' } : {}}
+        style={isAnimating ? { animation: "pulse 0.5s ease" } : {}}
       >
         DJ SURREAL
       </div>
-      
+
       {/* Search Bar Implementation */}
       <div className="search-container">
         <label htmlFor="track-search" className="search-icon">
-            <Search size={18} />
+          <Search size={18} />
         </label>
-        <input 
-            id="track-search"
-            type="text" 
-            placeholder="Search tracks..." 
-            className="search-input"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
+        <input
+          id="track-search"
+          type="text"
+          placeholder="Search tracks..."
+          className="search-input"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
         />
       </div>
 
-      <div className="header-actions">
+      <div className="header-actions flex gap-3 items-center">
+        <Link href="/admin" className="header-btn" title="Admin Panel">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+          >
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+          </svg>
+          <span>Admin</span>
+        </Link>
+
+        <Link
+          href="/auth"
+          className="header-btn primary"
+          title="Sign In / Register"
+        >
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+          >
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+            <circle cx="12" cy="7" r="4" />
+          </svg>
+          <span>Sign In</span>
+        </Link>
+
         <button className="header-btn" id="themeBtn" onClick={toggleTheme}>
           {theme === "dark" ? (
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+            >
               <circle cx="12" cy="12" r="5" />
               <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
             </svg>

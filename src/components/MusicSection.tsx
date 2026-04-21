@@ -183,7 +183,7 @@ export default function MusicSection({
     <div className="music-section">
       {/* New Hero Image on the Right */}
 
-      <div className="section-header mt-8">
+      <div className="section-header  ">
         <h2 className="section-title">
           <span className="live-dot"></span>Latest Tracks
         </h2>
